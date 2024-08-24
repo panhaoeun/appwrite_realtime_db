@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  appwrite:
+    image: appwrite/appwrite:latest
+    ports:
+      - 80:80
+    environment:
+      _APP_ENV: production
+      _APP_OPENSSL_KEY_V1: your-random-key-here
+      _APP_DOMAIN: yourdomain.com # The domain name or public IP of your Render service
+      _APP_CONSOLE_WHITELIST_EMAILS: your-email@example.com # Optional, for whitelisting emails to access the console
+      _APP_SMTP_HOST: smtp.your-email-provider.com # Optional, for email notifications
+      _APP_SMTP_PORT: 587 # Optional, for email notifications
+      _APP_SMTP_SECURE: tls # Optional, for email notifications
+      _APP_SMTP_USERNAME: smtp-user@example.com # Optional, for email notifications
+      _APP_SMTP_PASSWORD: smtp-password # Optional, for email notifications
+    volumes:
+      - appwrite_storage:/storage
+      - appwrite_functions:/functions
+
+volumes:
+  appwrite_storage:
+  appwrite_functions:
